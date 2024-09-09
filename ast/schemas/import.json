@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Import",
+  "description": "A single import line.",
+  "type": "object",
+  "required": ["path", "symbols"],
+  "properties": {
+    "path": { "type": "string" },
+    "symbols": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

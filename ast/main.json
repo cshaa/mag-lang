@@ -1,0 +1,68 @@
+{
+  "$schema": "./schemas/program.json",
+  "imports": [{ "path": "std", "symbols": ["println", "String", "f64"] }],
+  "declarations": [
+    {
+      "accessibility": "public",
+      "function": {
+        "name": "add",
+        "arguments": [
+          { "identifier": "a", "type": { "identifier": "f64" } },
+          { "identifier": "b", "type": { "identifier": "f64" } }
+        ],
+        "body": [
+          {
+            "return": {
+              "binary-operation": {
+                "lhs": { "identifier": "a" },
+                "op": "+",
+                "rhs": { "identifier": "b" }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "accessibility": "public",
+      "function": {
+        "name": "main",
+        "arguments": [],
+        "body": [
+          {
+            "declaration": {
+              "identifier": "msg",
+              "type": { "identifier": "String" },
+              "value": { "string-literal": "hello-world" }
+            }
+          },
+          {
+            "expression": {
+              "call": {
+                "function": { "identifier": "println" },
+                "arguments": [{ "identifier": "msg" }]
+              }
+            }
+          },
+          {
+            "expression": {
+              "call": {
+                "function": { "identifier": "println" },
+                "arguments": [
+                  { "string-literal": "two plus three is" },
+                  {
+                    "binary-operation": {
+                      "lhs": { "numeric-literal": "2" },
+                      "op": "+",
+                      "rhs": { "numeric-literal": "3" }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

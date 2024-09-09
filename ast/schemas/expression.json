@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Expression",
+  "anyOf": [
+    {
+      "type": "object",
+      "required": ["identifier"],
+      "properties": { "identifier": { "type": "string" } }
+    },
+    {
+      "type": "object",
+      "required": ["string-literal"],
+      "properties": { "string-literal": { "type": "string" } }
+    },
+    {
+      "type": "object",
+      "required": ["numeric-literal"],
+      "properties": { "numeric-literal": { "type": "string" } }
+    },
+    {
+      "type": "object",
+      "required": ["binary-operation"],
+      "properties": {
+        "binary-operation": {
+          "type": "object",
+          "required": ["lhs", "op", "rhs"],
+          "properties": {
+            "lhs": { "$ref": "./expression.json" },
+            "rhs": { "$ref": "./expression.json" },
+            "op": { "enum": ["+", "-", "*", "/"] }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": ["call"],
+      "properties": {
+        "call": {
+          "type": "object",
+          "required": ["function", "arguments"],
+          "properties": {
+            "function": { "$ref": "./expression.json" },
+            "arguments": {
+              "type": "array",
+              "items": { "$ref": "./expression.json" }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

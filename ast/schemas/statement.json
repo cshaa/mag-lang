@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Statement",
+  "description": "A line in a function body",
+  "anyOf": [
+    {
+      "type": "object",
+      "required": ["declaration"],
+      "properties": {
+        "declaration": { "$ref": "./declaration.json" }
+      }
+    },
+    {
+      "type": "object",
+      "required": ["expression"],
+      "properties": {
+        "expression": { "$ref": "./expression.json" }
+      }
+    },
+    {
+      "type": "object",
+      "required": ["return"],
+      "properties": {
+        "return": { "$ref": "./expression.json" }
+      }
+    }
+  ]
+}
